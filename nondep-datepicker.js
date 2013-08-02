@@ -1,7 +1,10 @@
-/* 2013 Steen Klingberg, v0.1, MIT License */
+/*!
+ * 2013 Steen Klingberg, v0.1, 
+ * @license: MIT License
+ */
 (function () {
 
-	var nondepDatepicker = function () {
+	var nodepDatepicker = function () {
 
 		var defaultConf = {
 			months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -63,7 +66,7 @@
 			var fd = new Date(date);
 			fd.setMonth(0);
 			fd.setDate(1);
-			var dd = ((((fd.getDay() + 6) % 7) + 3) % 7) - 3
+			var dd = ((((fd.getDay() + 6) % 7) + 3) % 7) - 3,
 			yd = getYearDay(date) - 1 + dd,
 			w = Math.floor(yd / 7) + 1;		
 			if (w > 52) {
@@ -177,14 +180,6 @@
 					}
 				}
 
-				/* start date */
-				function today () {
-					var dt = new Date();
-					month.value = dt.getMonth();
-					year.value = dt.getFullYear();
-					day.value = dt.getDate();
-					layoutWeeks();
-				}
 				function toDate (date) {
 					month.value = date.getMonth();
 					year.value = date.getFullYear();
@@ -197,7 +192,7 @@
 					toDate(new Date());
 				}
 
-				popup.addEventListener('click', function (evt) {
+				popup.addEventListener('click', function () {
 					input.value = formatDate(new Date(year.value, month.value, day.value), 'yyyy-mm-dd');
 				});
 
@@ -282,7 +277,7 @@
 				var tp = document.createElement('div');
 				popup.appendChild(tp);
 				var h = (conf||{}).headings || defaultConf.headings;
-				for (dn in h) {
+				for (var dn in h) {
 					var nn = document.createElement('div');
 					nn.appendChild(document.createTextNode(h[dn]));
 					tp.appendChild(nn);
@@ -389,9 +384,9 @@
 	}
 	
 	if (typeof define === 'function') {
-		define(nondepDatepicker);
+		define(nodepDatepicker);
 	} else {
-		window.nondepDatepicker = nondepDatepicker();
+		window.nodepDatepicker = nodepDatepicker();
 	}
 
 })()

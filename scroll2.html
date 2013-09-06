@@ -6,7 +6,7 @@
 		<!--script type="application/javascript" src="http://steenk.github.io/tripledollar.js"></script-->
 		<script>
 		(function () {
-  var VERSION = '0.6.3';
+  var VERSION = '0.6.4';
 /*
  * The triple dollar function creates a DOM object.
  */
@@ -220,7 +220,7 @@
   /*
    * In case a $ function is not initialized.
    */
-  //if (! window.$ && document.querySelectorAll) {window.$ = function (sel) { return document.querySelectorAll(sel);}};
+  if (! window.$ && document.querySelectorAll) {window.$ = function (sel) { return document.querySelectorAll(sel);}};
 
 })();
 </script>
@@ -265,20 +265,20 @@
 		$$$.appendToDoc (
 			['div#top', 'top', {style:'background-color: yellow'},
 				$$$('button', 'to middle').evt('click', function () {
-					//var p = document.querySelectorAll('#middle')[0].offsetTop;
-          var p = document.getElementById('middle').offsetTop;
+					var p = document.querySelectorAll('#middle')[0].offsetTop;
+          //var p = document.getElementById('middle').offsetTop;
 					smoothScroll(0, p);
 				}),
 				$$$('button', 'to bottom').evt('click', function () {
-					//var p = document.querySelectorAll('#bottom')[0].offsetTop;
-          var p = document.getElementById('bottom').offsetTop;
+					var p = document.querySelectorAll('#bottom')[0].offsetTop;
+          //var p = document.getElementById('bottom').offsetTop;
 					smoothScroll(0, p);
 				}), ['p', ipsum]
 			],
 			['div#middle', 'middle', {style:'background-color: green'},
 				$$$('button', 'to bottom').evt('click', function () {
-					//var p = document.querySelectorAll('#bottom')[0].offsetTop;
-          var p = document.getElementById('bottom').offsetTop;
+					var p = document.querySelectorAll('#bottom')[0].offsetTop;
+          //var p = document.getElementById('bottom').offsetTop;
 					smoothScroll(0, p);
 				}), ['p', ipsum]
 			],

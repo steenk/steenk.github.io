@@ -28,17 +28,17 @@
      ,  n = ident.split(/[\.#]/)
      ,  t = ident.split(/[^\.#]+/)
      ,  e;
-    if (t[0] !== '' || n[0] === '') {
+    if (t[0] == '') {
+      t.shift();
       //throw new Error("The identity paramameter didn't start with a tag name.");
     }
     for (var i=0; i<n.length; i++) {
       if (i === 0) {
         e = document.createElement(n[i]);
       } else {
-        if (t[i] === '.') {
+        if (t[i-1] === '.') {
           e.classList.add(n[i]);
-        } else if (t[i] === '#') {
-          alert(n[i]);
+        } else if (t[i-1] === '#') {
           e.setAttribute('id', n[i]);
         }
       }

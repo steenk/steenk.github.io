@@ -250,10 +250,10 @@
 
 		function smoothScroll(x, y) {
 			var d;
-      if (window.scrollY) {
-        d = y - window.scrollY;
+      if (window.pageYOffset) {
+        d = y - window.pageYOffset;
       } else {
-        d = y - document.body.scrollTop;
+        d = y - document.html.scrollTop;
       }
       var e = Math.abs(d);
 			if (e > 1) {

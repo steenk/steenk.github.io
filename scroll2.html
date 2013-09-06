@@ -107,9 +107,17 @@
     e.evt = function (ev, func) {
       if (arguments.length > 2) {
         var args = Array.prototype.slice.call(arguments, 2);
-        this.addEventListener(ev, function (e) {var a = [e].concat(args); func.apply(this, a)});
+        if (this.addEventListener) {
+          this.addEventListener(ev, function (e) {var a = [e].concat(args); func.apply(this, a)});
+        } else {
+          this.attachEvent('on'+ev, function (e) {var a = [e].concat(args); func.apply(this, a)});
+        }
       } else {
-        this.addEventListener(ev, func);
+        if (this.addEventListener) {
+          this.addEventListener(ev, func);
+        } else {
+          this.attachEvent('on'+ev, func);
+        }
       }
       return this;
     };

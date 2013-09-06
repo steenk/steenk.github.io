@@ -30,7 +30,18 @@
     if (t[0] !== '' || n[0] === '') {
       //throw new Error("The identity paramameter didn't start with a tag name.");
     }
-    n.forEach(function (v, i) {
+    for (var i=0; i<n.length; i++) {
+      if (i === 0) {
+        e = document.createElement(n[i]);
+      } else {
+        if (t[i] === '.') {
+          e.classList.add(n[i]);
+        } else if (t[i] === '#') {
+          e.setAttribute('id', n[i]);
+        }
+      }
+    });
+/*    n.forEach(function (v, i) {
       if (i === 0) {
         e = document.createElement(v);
       } else {
@@ -41,7 +52,7 @@
         }
       }
     });
-
+*/
     function allArgs (args) {
       for (var i=0; i<args.length; i++) {
         var param = args[i];

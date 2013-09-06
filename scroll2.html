@@ -13,7 +13,8 @@
   var $$$ = function () {
     var args = Array.prototype.slice.call(arguments);
     if (typeof args[0] !== 'string') {
-      if (Array.isArray(args[0])) {
+      if (Object.prototype.toString.call(args[0]) === '[object Array]') {
+      //if (Array.isArray(args[0])) {
         return $$$.apply(this, args[0]);
       } else {
         //throw new Error("The input to tripledollar is not valid.");
@@ -59,7 +60,8 @@
         if (param && param.nodeType) {
           e.appendChild(param);
         } else if (typeof param === 'object') {
-          if (Array.isArray(param)) {
+          if (Object.prototype.toString.call(param) === '[object Array]') {
+          //if (Array.isArray(param)) {
             e.appendChild($$$.apply(this, param));
           } else {
             for (var a in param) {
@@ -191,7 +193,8 @@
   $$$.appendToDoc = function () {
     var args = Array.prototype.slice.call(arguments);
     for (var i=0; i<args.length; i++) {
-      if (Array.isArray(args[i])) {
+      if (Object.prototype.toString.call(args[i]) === '[object Array]') {
+      //if (Array.isArray(args[i])) {
         document.body.appendChild($$$(args[i]));
       } else if (args[i] instanceof HTMLElement) {
         document.body.appendChild(args[i]);

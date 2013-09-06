@@ -16,7 +16,7 @@
       if (Array.isArray(args[0])) {
         return $$$.apply(this, args[0]);
       } else {
-        throw new Error("The input to tripledollar is not valid.");
+        //throw new Error("The input to tripledollar is not valid.");
       }
     }
 
@@ -28,7 +28,7 @@
      ,  t = ident.split(/[^\.#]+/)
      ,  e;
     if (t[0] !== '' || n[0] === '') {
-      throw new Error("The identity paramameter didn't start with a tag name.");
+      //throw new Error("The identity paramameter didn't start with a tag name.");
     }
     n.forEach(function (v, i) {
       if (i === 0) {
@@ -177,7 +177,7 @@
       } else if (args[i] instanceof HTMLElement) {
         document.body.appendChild(args[i]);
       } else {
-        throw Error("Undefined input to tripledollar.");
+        //throw Error("Undefined input to tripledollar.");
       }
     }
   }

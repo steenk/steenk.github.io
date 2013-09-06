@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>scroll</title>
+		<meta charset="utf-8" />
+		<script type="application/javascript" src="http://steenk.github.io/tripledollar.js"></script>
+		<style>
+		body {
+			padding: 0;
+			margin: 0;
+		}
+		div {
+			width: 900px;
+			height: 900px;
+			margin-left: auto;
+			margin-right: auto;
+			border-bottom: solid gray 1px;
+		}
+		</style>
+	</head>
+	<body>
+		<script>
+		var ipsum = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc sapien, porta id pellentesque at, elementum et felis. Curabitur condimentum ante in metus iaculis quis congue diam commodo. Donec eleifend ante sed nulla dapibus convallis. Ut cursus aliquam neque, vel porttitor tellus interdum ut. Sed pharetra lacinia adipiscing. In tristique tristique felis non tincidunt. Nulla auctor mauris a velit cursus ultricies. In at libero quis justo consectetur laoreet. Nullam id ultrices nunc. Donec non turpis nulla, eu lacinia ante. Nunc eu orci et turpis pretium venenatis. Nam molestie, lacus at dignissim elementum, ante libero consectetur libero, ut lacinia lacus urna et purus. Nullam lorem ipsum, dapibus vel ullamcorper a, malesuada a metus. Sed porta adipiscing magna, quis pulvinar purus mattis fringilla. Integer pellentesque sapien in neque tristique ac iaculis libero ultricies. Ut eget pharetra purus.' +
+
+'Nulla in convallis tellus. Proin tincidunt suscipit vulputate. Suspendisse potenti. Nullam tristique justo mi, a tristique ligula. Duis convallis aliquam iaculis. Nulla dictum fringilla congue. Suspendisse ac leo lectus, ac aliquam justo. Ut porttitor commodo mi sed luctus. Nulla at enim lorem. Nunc eu justo sapien, a blandit odio. Curabitur faucibus sollicitudin dolor, id lacinia sem auctor in. Donec varius nunc at lectus sagittis nec luctus arcu pharetra. Nunc sed metus justo. Cras vel mauris diam. Ut feugiat felis eget neque pharetra vestibulum consectetur massa facilisis. Quisque consectetur luctus nisi quis tincidunt. Vivamus cursus cursus quam non blandit. Pellentesque et velit lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.' +
+
+'In et dolor vitae orci adipiscing congue. Aliquam gravida nibh at nisl gravida molestie. Curabitur a bibendum sapien. Aliquam tincidunt, nulla nec pretium lobortis, odio augue tincidunt arcu, a lobortis odio sem ut purus. Donec accumsan mattis nunc vitae lacinia. Suspendisse potenti. Integer commodo nisl quis nibh interdum non fringilla dui sodales. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In hac habitasse platea dictumst. Etiam ullamcorper, mi id feugiat bibendum, purus neque cursus mauris, id sodales quam nisi id velit. Sed lectus leo, tincidunt vel rhoncus imperdiet, blandit in leo. Integer quis magna nulla. Donec vel nisl magna, ut rhoncus dui. Aliquam gravida, nulla nec eleifend luctus, neque nibh pharetra ante, quis egestas elit metus a mi. Nunc nec augue quam. Morbi tincidunt tristique varius. Suspendisse iaculis elit feugiat magna pellentesque ultricies. Vestibulum aliquam tortor non ante ullamcorper fringilla. Donec iaculis mi quis mauris ornare vestibulum.' +
+
+'In a magna nisi, a ultricies massa. Donec elit neque, viverra non tempor quis, fringilla in metus. Integer odio odio, euismod vitae mollis sed, sodales eget libero. Donec nec massa in felis ornare pharetra at nec tellus. Nunc lorem dolor, pretium vel auctor in, volutpat vitae felis. Maecenas rhoncus, orci vel blandit euismod, turpis erat tincidunt ante, elementum adipiscing nisl urna in nisi. Phasellus sagittis, enim sed accumsan consequat, urna augue lobortis erat, non malesuada quam metus sollicitudin ante. In leo purus, dignissim quis varius vel, pellentesque et nibh. In sed tortor iaculis libero mollis pellentesque id vitae lectus. In hac habitasse platea dictumst. Phasellus mauris enim, posuere eget luctus ac, iaculis et quam. Vivamus et nibh diam, elementum egestas tellus. Aenean vulputate malesuada est. Sed posuere porta diam a sodales. Proin eu sem non velit facilisis venenatis sed a turpis.';
+
+		function smoothScroll(x, y) {
+			var d, e;
+			if ((e = Math.abs(d = y - window.scrollY)) > 1) {
+				console.log(e);
+				window.scrollBy(0, (d < 0 ? -1 : 1) * (e > 5 ? Math.round(e/10) : 1));
+				setTimeout(function () {smoothScroll(x, y)}, 10);
+			}
+		}
+
+		$$$.appendToDoc (
+			['div#top', 'top', {style:'background-color: yellow'},
+				$$$('button', 'to middle').evt('click', function () {
+					var p = $('#middle')[0].offsetTop;
+					smoothScroll(0, p);
+				}),
+				$$$('button', 'to bottom').evt('click', function () {
+					var p = $('#bottom')[0].offsetTop;
+					smoothScroll(0, p);
+				}), ['p', ipsum]
+			],
+			['div#middle', 'middle', {style:'background-color: green'},
+				$$$('button', 'to bottom').evt('click', function () {
+					var p = $('#bottom')[0].offsetTop;
+					smoothScroll(0, p);
+				}), ['p', ipsum]
+			],
+			['div#bottom', 'bottom', {style:'background-color: red'},
+				$$$('button', 'to top').evt('click', function () {
+					smoothScroll(0, 0);
+				}), ['p', ipsum]
+			]
+		)
+</script>
+	</body>
+</html>

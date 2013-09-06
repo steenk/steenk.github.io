@@ -260,19 +260,19 @@
 			['div#top', 'top', {style:'background-color: yellow'},
 				$$$('button', 'to middle').evt('click', function () {
 					//var p = document.querySelectorAll('#middle')[0].offsetTop;
-          var p = document.getElementById('middle');
+          var p = document.getElementById('middle').offsetTop;
 					smoothScroll(0, p);
 				}),
 				$$$('button', 'to bottom').evt('click', function () {
 					//var p = document.querySelectorAll('#bottom')[0].offsetTop;
-          var p = document.getElementById('bottom');
+          var p = document.getElementById('bottom').offsetTop;
 					smoothScroll(0, p);
 				}), ['p', ipsum]
 			],
 			['div#middle', 'middle', {style:'background-color: green'},
 				$$$('button', 'to bottom').evt('click', function () {
 					//var p = document.querySelectorAll('#bottom')[0].offsetTop;
-          var p = document.getElementById('bottom');
+          var p = document.getElementById('bottom').offsetTop;
 					smoothScroll(0, p);
 				}), ['p', ipsum]
 			],

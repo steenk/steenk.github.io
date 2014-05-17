@@ -30,17 +30,17 @@
     $$$.appendToDoc (
       ['div#top', 'top', {style:'background-color: yellow'},
         $$$('button', 'to middle').evt('click', function () {
-          var p = $('#middle')[0].offsetTop;
+          var p = $$$.query('#middle').offsetTop;
           smoothScroll(0, p);
         }),
         $$$('button', 'to bottom').evt('click', function () {
-          var p = $('#bottom')[0].offsetTop;
+          var p = $$$.query('#bottom').offsetTop;
           smoothScroll(0, p);
         }), ['p', ipsum]
       ],
       ['div#middle', 'middle', {style:'background-color: green'},
         $$$('button', 'to bottom').evt('click', function () {
-          var p = $('#bottom')[0].offsetTop;
+          var p = $$$.query('#bottom').offsetTop;
           smoothScroll(0, p);
         }), ['p', ipsum]
       ],

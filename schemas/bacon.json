@@ -1,0 +1,53 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema#",
+	"title": "bacon",
+	"version": "0.1.0",
+	"properties": {
+		"_id": {
+			"type": "string"
+		},
+		"filename": {
+			"type": "string"
+		},
+		"version": {
+			"$ref": "#/definitions/semVer"
+		},
+		"group": {
+			"enum": ["public", "private"]
+		},
+		"info": {
+			"format": "uri"
+		},
+		"git": {
+			"format": "uri"
+		},
+		"command": {
+			"$ref": "#/definitions/commandPattern"
+		},
+		"versions": {
+			"type": "object",
+			"patternProperties": {
+				"^[0-9a-f]{40}$": { "$ref": "#/definitions/semVer" }
+			},
+			"additionalProperties": false
+		}
+	},
+	"definitions": {
+		"semVer": {
+			"title": "Semantic Versioning",
+			"pattern": "^[0-9]+\\.[0-9]\\.+[0-9]$"
+		},
+		"commandPattern": {
+			"title": "Allowed shell commands",
+			"oneOf": [
+				{
+					"pattern": "^curl[^;&|]+$"
+				},
+				{
+					"pattern": "^git[^;&|]+$"
+				}
+			]
+		}
+	},
+	"required": ["_id", "filename", "version"]
+}

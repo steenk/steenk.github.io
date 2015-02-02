@@ -1,7 +1,7 @@
 {
 	"$schema": "http://json-schema.org/draft-04/schema#",
 	"title": "bacon",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"properties": {
 		"_id": {
 			"type": "string"
@@ -35,7 +35,7 @@
 	"definitions": {
 		"semVer": {
 			"title": "Semantic Versioning",
-			"pattern": "^[0-9]+\\.[0-9]\\.+[0-9]$"
+			"pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(-[a-z0-9]+)?$"
 		},
 		"commandPattern": {
 			"title": "Allowed shell commands",

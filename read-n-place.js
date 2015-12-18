@@ -1,5 +1,7 @@
 define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 
+	// read-n-place v0.1.0
+
 	function readData (elem, model) {
 		var data = kvp({});
 		Object.keys(model).forEach(function (id) {
@@ -69,7 +71,6 @@ define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 						}
 					}
 				} else if (model[id].type === Object) {
-					console.log(JSON.stringify(value));
 					if (model[id].model) {
 						placeData(input, model[id].model, value);
 					}

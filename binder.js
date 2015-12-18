@@ -73,7 +73,6 @@ define(['tripledollar', 'read-n-replace'], function ($$$, rnr) {
 		}
 
 		var changed = this.changed = function (evt) {
-			console.log('internal change');
 			var t = evt.target;
 			/*
 				The target is inside a view, and we need to find the root

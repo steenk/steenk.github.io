@@ -29,6 +29,11 @@ define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 						list = val.split(divider);
 						data.insert(model[id].pointer, list);
 					}
+				} else if (model[id].type === Object) {
+					if (model[id].model) {
+						p = model[id].pointer;
+						data.insert(p, readData(d, model[id].model));
+					}
 				} else {
 					data.insert(model[id].pointer, model[id].type(d.value));
 				}
@@ -62,6 +67,11 @@ define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 						} else {
 							input.textContent = value;
 						}
+					}
+				} else if (model[id].type === Object) {
+					console.log(JSON.stringify(value));
+					if (model[id].model) {
+						placeData(input, model[id].model, value);
 					}
 				} else if (model[id].type === Boolean) {
 					input.checked = Boolean(value);

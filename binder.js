@@ -1,6 +1,6 @@
 define(['tripledollar', 'read-n-replace'], function ($$$, rnr) {
 
-	//	Controller
+	//	Binder v0.1.0
 
 	var Binder = function () {
 		var controller_id = 'controller_' + Math.random().toString(16).substr(2),

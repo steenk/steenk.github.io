@@ -1,6 +1,6 @@
 define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 
-	// read-n-place v0.1.0
+	// read-n-place v0.1.1
 
 	function readData (elem, model) {
 		var data = kvp({});
@@ -53,7 +53,7 @@ define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 			var input = elem.query('#' + id),
 				value = data.select(model[id].pointer);
 			if (input) {
-				if (model[id].type === Array) {
+				if (model[id].type === Array && value) {
 					if (model[id].model) {
 						template = $$$.structify(input.firstChild);
 						$$$.destroy(input);

@@ -52,6 +52,7 @@ define(['tripledollar', 'key-value-pointer'], function ($$$, kvp) {
 		Object.keys(model).forEach(function (id) {
 			var input = elem.query('#' + id),
 				value = data.select(model[id].pointer);
+			
 			if (input) {
 				if (model[id].type === Array) {
 					if (!value) value = [];

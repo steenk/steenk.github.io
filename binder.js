@@ -1,6 +1,6 @@
-define(['tripledollar', 'read-n-place'], function ($$$, rnp) {
+define(['tripledollar', 'read-n-place', 'key-value-pointer'], function ($$$, rnp, kvp) {
 
-	//	Binder v0.1.2
+	//	Binder v0.1.3
 
 	var Binder = function () {
 		var controller_id = 'controller_' + Math.random().toString(16).substr(2),
@@ -85,6 +85,19 @@ define(['tripledollar', 'read-n-place'], function ($$$, rnp) {
 		this.setViewData = function (target, data) {
 			var view = this.getViewRoot(target);
 			if (view) {
+				rnp.placeData(view, _model, data);
+			}
+		}
+
+		this.clearView = function (target) {
+			var view = this.getViewRoot(target),
+				data = {};
+			if (view) {
+				kvp(JSON.stringify(_model)).query(function (node) {
+					if (node.key = 'pointer') {
+						this.insert(node.value, '');
+					}
+				});
 				rnp.placeData(view, _model, data);
 			}
 		}

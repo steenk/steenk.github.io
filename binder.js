@@ -1,6 +1,6 @@
-define(['tripledollar', 'read-n-place'], function ($$$, rnr) {
+define(['tripledollar', 'read-n-place'], function ($$$, rnp) {
 
-	//	Binder v0.1.1
+	//	Binder v0.1.2
 
 	var Binder = function () {
 		var controller_id = 'controller_' + Math.random().toString(16).substr(2),
@@ -43,13 +43,13 @@ define(['tripledollar', 'read-n-place'], function ($$$, rnr) {
 
 		var pushToViews = this.pushToViews = function (target) {
 			if (!target) return;
-			var data = rnr.readData(target, _model);
+			var data = rnp.readData(target, _model);
 			for (id in bindings) {
 				/*
 					If the push is initiated from a view, exclude it from the push.
 				*/
 				if (target && (id !== target.id)) {
-					rnr.placeData(bindings[id].view, _model, data);
+					rnp.placeData(bindings[id].view, _model, data);
 				}
 			}
 		}
@@ -68,7 +68,7 @@ define(['tripledollar', 'read-n-place'], function ($$$, rnr) {
 		this.getViewData = function (target) {
 			var view = this.getViewRoot(target);
 			if (view) {
-				return rnr.readData(view, _model);
+				return rnp.readData(view, _model);
 			}
 		}
 
@@ -80,6 +80,13 @@ define(['tripledollar', 'read-n-place'], function ($$$, rnr) {
 			*/
 			pushToViews(getViewRoot(t));
 			dispatchEvent(evt);
+		}
+
+		this.setViewData = function (target, data) {
+			var view = this.getViewRoot(target);
+			if (view) {
+				rnp.placeData(view, _model, data);
+			}
 		}
 
 		function addEventListener (evtype, callback) {

@@ -1,5 +1,10 @@
-/* td-document-minimal v.0.1.1, steenk 2020, license MIT.
-   Minimal HTML document, made for running tripledollar in deno.
+/**
+ * @name td-document-minimal
+ * @file Minimal HTML document, made for running tripledollar in deno.
+ * @author steenk
+ * @copywrite 2020 unstrap.org
+ * @license MIT
+ * @version 0.1.2
 */
 function HTMLElement (name) {
   name = name || 'div';

@@ -1,4 +1,4 @@
-/* td-document-minimal v.0.1.0, steenk 2020, license MIT.
+/* td-document-minimal v.0.1.1, steenk 2020, license MIT.
    Minimal HTML document, made for running tripledollar in deno.
 */
 function HTMLElement (name) {
@@ -36,9 +36,7 @@ function HTMLElement (name) {
     get() {
       let html = '<' + name;
       for (let attr in this.attributes) {
-        if (attr != 'id') {
           html += ' ' + attr + '="' + this.attributes[attr] + '"';
-        }
       }
       html += '>';
       for (let child of this.children) {

@@ -88,3 +88,8 @@ window.document.body = window.document.createElement('body');
 window.document.firstElementChild.appendChild(window.document.head);
 window.document.firstElementChild.appendChild(window.document.body);
 window.document.readyState = 'complete';
+
+/**
+ * @module td-document-minimal
+ */
+export default window.document;

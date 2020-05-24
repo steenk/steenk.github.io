@@ -1,7 +1,6 @@
-/* steenk 2020, license MIT
+/* td-document-minimal v.0.1.0, steenk 2020, license MIT.
    Minimal HTML document, made for running tripledollar in deno.
 */
-
 function HTMLElement (name) {
   name = name || 'div';
   this.children = [];
@@ -86,4 +85,3 @@ window.document.body = window.document.createElement('body');
 window.document.firstElementChild.appendChild(window.document.head);
 window.document.firstElementChild.appendChild(window.document.body);
 window.document.readyState = 'complete';
-

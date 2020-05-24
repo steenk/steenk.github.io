@@ -1,3 +1,7 @@
+/* steenk 2020, license MIT
+   Minimal HTML document, made for running tripledollar in deno.
+*/
+
 function HTMLElement (name) {
   name = name || 'div';
   this.children = [];
